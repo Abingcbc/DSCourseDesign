@@ -83,7 +83,6 @@ public:
             start_stu = temp->getNext();
             delete temp;
         }
-        delete this;
     }
 
     void print() {
@@ -261,21 +260,4 @@ int main() {
                 cin >> id;
                 stu_list->find(id);
                 break;
-            case 4:
-                cout << "请输入要修改的考生的考号：";
-                cin >> id;
-                cout << "请依次输入要插入的考生的考号，姓名，性别，年龄及报考类别！" << endl;
-                cin >> id >> name >> sex >> age >> type;
-                stu_list->reset(id, name, sex, age, type);
-                break;
-            case 5:
-                stu_list->print();
-                break;
-            default:
-                cout << "输入的操作数不存在，请重新输入！" << endl;
-                break;
-        }
-        cout << "请输入您要进行的操作：";
-    }
-    return 0;
-}
+            case 4
