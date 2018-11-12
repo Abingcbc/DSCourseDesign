@@ -90,7 +90,6 @@ stack<Point> findRout() {
 }
 
 int main() {
-    stack<Point> result = findRout();
     cout << "迷宫地图：" << endl;
     for (int i = 0; i < 7; i++) {
         cout << "     " << i << "列";
@@ -102,7 +101,8 @@ int main() {
             cout << map[i][j] << "       ";
         }
         cout << endl;
-    }
+    }z
+    stack<Point> result = findRout();
     while (1) {
         cout << "<" << result.top().x << "," << result.top().y << ">";
         result.pop();
