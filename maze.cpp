@@ -5,13 +5,14 @@ using namespace std;
 
 struct Point {
 
+    int x;//横坐标
+    int y;//纵坐标
+
     Point(int i, int i1) {
         x = i;
         y = i1;
     }
 
-    int x;
-    int y;
 
     bool equal(Point point) {
         if (point.x == this->x && point.y == this->y) {
@@ -22,7 +23,7 @@ struct Point {
     }
 };
 
-char map[7][7] {
+char map[7][7] = {
         {'#', '#', '#', '#', '#', '#', '#'},
         {'#', '0', '#', '0', '0', '0', '#'},
         {'#', '0', '#', '0', '#', '#', '#'},
@@ -35,6 +36,7 @@ char map[7][7] {
 bool isBlocked[7][7];
 
 Point chooseDirection(Point point) {
+    //尝试不同方向
     if (point.x + 1 < 7 &&
     map[point.x + 1][point.y] =='0' &&
     !isBlocked[point.x + 1][point.y]) {
@@ -60,6 +62,7 @@ Point chooseDirection(Point point) {
 }
 
 stack<Point> findRout() {
+    //不断回溯寻找
     stack<Point> stack1;
     Point start = Point(1, 1);
     Point end = Point(5, 5);
@@ -97,11 +100,11 @@ int main() {
     cout << endl;
     for (int i = 0; i < 7; i++) {
         cout << i << "行" << "   ";
-        for (int j = 0; j < 7; j++) {
+        for (int j = 0;  j < 7; j++) {
             cout << map[i][j] << "       ";
         }
         cout << endl;
-    }z
+    }
     stack<Point> result = findRout();
     while (1) {
         cout << "<" << result.top().x << "," << result.top().y << ">";

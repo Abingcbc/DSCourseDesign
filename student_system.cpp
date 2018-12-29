@@ -1,11 +1,3 @@
-//
-//  main.cpp
-//  Data_Structure_Design
-//
-//  Created by cbc on 2018/9/17.
-//  Copyright © 2018年 cbc. All rights reserved.
-//
-
 #include <iostream>
 #include <string>
 
@@ -163,6 +155,7 @@ public:
             cout << "无此考号的考生" << endl;
             return false;
         }
+        return false;
     }
 
     void reset(int id1, int _id, string _name, string _sex, int _age, string _type) {

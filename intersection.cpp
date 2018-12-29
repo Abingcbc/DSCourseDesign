@@ -9,18 +9,18 @@ private:
     int value = 0;
 public:
     LinkedNode(LinkedNode *pre, LinkedNode *next, int val):
-    pre_node(pre), next_node(next), value(val) {}
+            pre_node(pre), next_node(next), value(val) {}
     ~LinkedNode() = default;
 
-    int getValue() {
+    int const getValue() {
         return value;
     }
 
-    LinkedNode* getNext() {
+    LinkedNode* const getNext() {
         return next_node;
     }
 
-    LinkedNode* getPre() {
+    LinkedNode* const getPre() {
         return pre_node;
     }
 
@@ -33,7 +33,7 @@ public:
     }
 
     //If the first is smaller than the next, then return -1.
-    static int compare(LinkedNode *node1, LinkedNode *node2) {
+    static int const compare(LinkedNode *node1, LinkedNode *node2) {
         if (node1->value < node2->value)
             return -1;
         else if (node1->value == node2->value)
@@ -61,7 +61,7 @@ public:
         LinkedNode *insertedNode = new LinkedNode(nullptr, nullptr, value);
         LinkedNode *temp = start;
         while (temp != nullptr) {
-            if (LinkedNode::compare(insertedNode, temp) <= 0) {
+            if (LinkedNode::compare(insertedNode, temp) < 0) {
                 if (temp->getPre() == nullptr) {
                     insertedNode->setNext(temp);
                     temp->setPre(insertedNode);
@@ -74,7 +74,8 @@ public:
                     temp->setPre(insertedNode);
                 }
                 break;
-            }
+            } else if (LinkedNode::compare(insertedNode, temp) == 0)
+                break;
             temp = temp->getNext();
         }
         if (temp == nullptr) {

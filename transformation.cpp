@@ -5,6 +5,7 @@
 using namespace std;
 
 int getLevel(string str) {
+    //设定优先级
     if (str == "(" || str == ")") {
         return 0;
     }
@@ -18,14 +19,9 @@ int getLevel(string str) {
 }
 
 bool isOperate(string string1) {
-    if (string1 == "(" || string1 == ")" ||
-        string1 == "+" || string1 == "-" ||
-        string1 == "*" || string1 == "/") {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return string1 == "(" || string1 == ")" ||
+    string1 == "+" || string1 == "-" ||
+    string1 == "*" || string1 == "/";
 }
 
 string transform() {
@@ -46,6 +42,7 @@ string transform() {
             stack1.pop();
         }
         else {
+            //判断是否为符号
             if (isOperate(element)) {
                 while (!stack1.empty() && getLevel(stack1.top()) >= getLevel(element)) {
                     result.append(" " + stack1.top());
